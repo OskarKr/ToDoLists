@@ -34,6 +34,8 @@ const addNewTodo = () => {
 	if (todoInput.value !== '') {
 		newTodo = document.createElement('li');
 		newTodo.textContent = todoInput.value;
+		createToolsArea();
+
 		ulList.append(newTodo);
 
 		todoInput.value = '';
@@ -41,6 +43,31 @@ const addNewTodo = () => {
 	} else {
 		errorInfo.textContent = 'Wpisz treść zadania!';
 	}
+};
+/*
+    funkcja dodajaca narzedzia
+    1. stworzyc diva tools
+    2. dodac do niego 3 przyciski
+    3. odpowiednie klasy i tresc
+*/
+const createToolsArea = () => {
+	const toolsDiv = document.createElement('div');
+	toolsDiv.classList.add('tools');
+	newTodo.append(toolsDiv);
+
+	const completeBtn = document.createElement('button');
+	completeBtn.classList.add('complete');
+	completeBtn.innerHTML = '<i class="fas fa-check"></i>';
+
+	const editBtn = document.createElement('button');
+	editBtn.classList.add('edit');
+	editBtn.textContent = 'EDIT';
+
+	const deleteBtn = document.createElement('button');
+	deleteBtn.classList.add('delete');
+	deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
+
+	toolsDiv.append(completeBtn, editBtn, deleteBtn);
 };
 
 document.addEventListener('DOMContentLoaded', main);
