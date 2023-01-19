@@ -20,6 +20,7 @@ const prepareDOMElements = () => {
 const prepareDOMEvents = () => {
 	//tutaj nadaje nasluchiwanie
 	addBtn.addEventListener('click', addNewTodo);
+	ulList.addEventListener('click', checkClick);
 };
 
 /* 
@@ -68,6 +69,17 @@ const createToolsArea = () => {
 	deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
 
 	toolsDiv.append(completeBtn, editBtn, deleteBtn);
+};
+
+const checkClick = e => {
+	if (e.target.matches('.complete')) {
+		e.target.closest('li').classList.toggle('completed');
+		e.target.classList.toggle('completed');
+	} else if (e.target.matches('.edit')) {
+		//
+	} else if (e.target.matches('.delete')) {
+		//
+	}
 };
 
 document.addEventListener('DOMContentLoaded', main);
